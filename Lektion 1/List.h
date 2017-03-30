@@ -22,7 +22,7 @@ private:
 	};
 	Node* first;
 	int nrOfElements;
-public:
+public://TODO adda fler funktioner
 	List();
 	~List();
 	void insertAt(const T& data, int pos)throw(...);
@@ -120,8 +120,6 @@ void List<T>::remove(int pos)
 	Node* prev;
 	for (int i = 0; i < pos + 1; i++)
 	{
-
-		Node* old = walker;
 		if (i == pos - 1)
 		{
 			prev = walker;
@@ -130,10 +128,28 @@ void List<T>::remove(int pos)
 		{
 			if (pos == 0)
 			{
-				Node* ptr = new Node(old, element);
-				this->first = ptr;
+				Node *next = walker->next;
+
+				this->first = next;
+				delete walker;
+				this->nrOfElements--;
 			}
+			else if (pos == this->nrOfElements - 1)
+			{
+				prev->next = nullptr;
+				delete walker;
+				this->nrOfElements--;
+			}
+			else
+			{
+				prev->next = walker->next;
+				delete walker;
+				this->nrOfElements--;
+			}
+
 		}
+		walker = walker->next;
+
 	}
 }
 

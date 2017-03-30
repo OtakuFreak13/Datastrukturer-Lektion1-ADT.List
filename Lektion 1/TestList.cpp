@@ -20,6 +20,16 @@ int main()
 	nrList.insertAt(110, 3);//80 90 100 110
 	nrList.printAll();//skriver ut 80 90 100 110
 
+	//test4 - remove
+	nrList.remove(3);
+	nrList.printAll();//Bör skriva ut 80 90 100
+
+	nrList.remove(1);
+	nrList.printAll();//Bör kriva ut 80 100
+
+	//TODO testa att adda fler och remova
+
+
 
 
 
