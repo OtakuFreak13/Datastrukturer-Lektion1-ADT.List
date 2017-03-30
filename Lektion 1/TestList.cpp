@@ -5,6 +5,7 @@
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	//test 1
 	List<int> nrList;//Tom lista
 	nrList.insertAt(100, 0);//listan innehåller 100

@@ -24,9 +24,11 @@ private:
 	int nrOfElements;
 public:
 	List();
-	//~List();//Tror inte  denna ska vara med
+	~List();
 	void insertAt(const T& data, int pos)throw(...);
 	void printAll()const;//Tillfällig ska tas bort. Finns bara för debug
+	void remove(int pos);
+
 };
 
 template <typename T>
@@ -34,6 +36,20 @@ List<T>::List()
 {
 	this->nrOfElements = 0;
 	this->first = nullptr;
+}
+template<typename T>
+inline List<T>::~List()
+{
+	
+	do
+	{
+		Node* walker = this->first;
+
+		Node *next = walker->next;
+
+		this->first = next;
+		delete walker;
+	} while(this->first!=nullptr);
 }
 template <typename T>
 void List<T>::insertAt(const T& element, int pos) throw(...)
@@ -97,6 +113,29 @@ void List<T>::printAll()const
 	}
 }
 
+template<typename T>
+void List<T>::remove(int pos)
+{
+	Node* walker=this->first;
+	Node* prev;
+	for (int i = 0; i < pos + 1; i++)
+	{
+
+		Node* old = walker;
+		if (i == pos - 1)
+		{
+			prev = walker;
+		}
+		if (i == pos)
+		{
+			if (pos == 0)
+			{
+				Node* ptr = new Node(old, element);
+				this->first = ptr;
+			}
+		}
+	}
+}
 
 
 
